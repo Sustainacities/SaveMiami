@@ -18,10 +18,12 @@ import { useMapStore } from '@/store/mapStore';
 import { LayerPanel } from '@/components/panels/LayerPanel';
 import { WasteControlPanel } from '@/components/panels/WasteControlPanel';
 import { NvidiaSimPanel } from '@/components/panels/NvidiaSimPanel';
+import { SamplingPanel } from '@/components/panels/SamplingPanel';
 import { TimeSlider } from '@/components/map/TimeSlider';
 import { TopBar } from '@/components/ui/TopBar';
 import { MapTooltip } from '@/components/ui/MapTooltip';
 import { useWasteLayers } from '@/components/layers/useWasteLayers';
+import { useSamplingLayer } from '@/components/layers/useSamplingLayer';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 const MAP_STYLE =
@@ -35,6 +37,7 @@ export default function MiamiDigitalTwin() {
     setViewState,
     wastePanelOpen,
     nvidiaPanelOpen,
+    samplingPanelOpen,
     hoverInfo,
     setHoverInfo,
     activeLayers,
@@ -44,7 +47,9 @@ export default function MiamiDigitalTwin() {
   const [cursor, setCursor] = useState<string>('grab');
 
   // ── Deck.gl layers (waste, PFAS, wind, zero-waste...) ─────
-  const deckLayers = useWasteLayers();
+  const wasteLayers    = useWasteLayers();
+  const samplingLayers = useSamplingLayer();
+  const deckLayers     = [...wasteLayers, ...samplingLayers];
 
   // ── Tooltip on hover ──────────────────────────────────────
   const handleHover = useCallback(
@@ -124,6 +129,9 @@ export default function MiamiDigitalTwin() {
 
       {/* ── NVIDIA simulation panel (bottom-right) ───────── */}
       {nvidiaPanelOpen && <NvidiaSimPanel />}
+
+      {/* ── Sampling / GIS heatmap panel ─────────────────── */}
+      {samplingPanelOpen && <SamplingPanel />}
 
       {/* ── Time slider (bottom) ─────────────────────────── */}
       <TimeSlider />

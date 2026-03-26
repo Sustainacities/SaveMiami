@@ -9,7 +9,7 @@ import { useState } from 'react';
 import {
   Flame, Trash2, Wind, Leaf, Recycle, Droplets,
   AlertTriangle, ChevronLeft, ChevronRight, Map, Layers,
-  Zap,
+  Zap, FlaskConical,
 } from 'lucide-react';
 import { useMapStore, type LayerId } from '@/store/mapStore';
 
@@ -72,6 +72,10 @@ export function LayerPanel() {
     setWastePanelOpen,
     nvidiaPanelOpen,
     setNvidiaPanelOpen,
+    samplingPanelOpen,
+    setSamplingPanelOpen,
+    showSamplingLayer,
+    setShowSamplingLayer,
     incineratorFocusMode,
     setIncineratorFocusMode,
   } = useMapStore();
@@ -198,6 +202,24 @@ export function LayerPanel() {
           >
             <Zap size={12} />
             NVIDIA Simulation
+          </button>
+
+          <button
+            onClick={() => {
+              setSamplingPanelOpen(!samplingPanelOpen);
+              if (!samplingPanelOpen) setShowSamplingLayer(true);
+            }}
+            className={`w-full text-left px-3 py-2 rounded-lg text-xs font-medium transition-colors flex items-center gap-2 ${
+              samplingPanelOpen
+                ? 'text-[#A170F1] bg-[#7C3AED]/10 border border-[#7C3AED]/30'
+                : 'text-gray-400 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <FlaskConical size={12} />
+            GIS Sampling
+            {showSamplingLayer && (
+              <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#7C3AED] animate-pulse-slow" />
+            )}
           </button>
 
           <button

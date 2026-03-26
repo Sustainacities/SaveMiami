@@ -1,11 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { Waves, Menu, X, ExternalLink } from 'lucide-react';
+import { Waves, Menu, X, ExternalLink, FlaskConical } from 'lucide-react';
 import { useMapStore } from '@/store/mapStore';
 
 export function TopBar() {
-  const { simulationMode, setSimulationMode, wastePanelOpen, setWastePanelOpen } = useMapStore();
+  const {
+    simulationMode, setSimulationMode,
+    wastePanelOpen, setWastePanelOpen,
+    samplingPanelOpen, setSamplingPanelOpen,
+    showSamplingLayer, setShowSamplingLayer,
+  } = useMapStore();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -50,6 +55,26 @@ export function TopBar() {
           }`}
         >
           🗑️ WASTE
+        </button>
+
+        {/* GIS SAMPLING button */}
+        <button
+          onClick={() => {
+            setSamplingPanelOpen(!samplingPanelOpen);
+            if (!samplingPanelOpen) setShowSamplingLayer(true);
+          }}
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
+            samplingPanelOpen
+              ? 'bg-[#7C3AED]/20 text-[#A170F1] border-[#7C3AED]/60'
+              : 'border-[#7C3AED]/60 text-[#A170F1] hover:bg-[#7C3AED]/10'
+          }`}
+          title="GIS Sampling Protocol — Dr. Phil's 9-point composite method"
+        >
+          <FlaskConical size={12} />
+          GIS SAMPLE
+          {showSamplingLayer && (
+            <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] animate-pulse-slow" />
+          )}
         </button>
 
         {/* Partner badges */}

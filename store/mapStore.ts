@@ -1,4 +1,9 @@
 import { create } from 'zustand';
+import {
+  DEFAULT_SAMPLING_CONFIG,
+  type SamplingConfig,
+  type AnalyteResults,
+} from '@/lib/sampling/field-protocol';
 
 // ── Layer identifiers ──────────────────────────────────────────
 export type LayerId =
@@ -15,7 +20,8 @@ export type LayerId =
   | 'heat_islands'
   | 'recycling'
   | 'composting'
-  | 'epa_superfund';
+  | 'epa_superfund'
+  | 'sampling';
 
 // ── Simulation modes ───────────────────────────────────────────
 export type SimulationMode = 'historical' | 'live' | 'scenario';
@@ -105,6 +111,28 @@ export interface MapStore {
   // NVIDIA panel
   nvidiaPanelOpen: boolean;
   setNvidiaPanelOpen: (v: boolean) => void;
+
+  // ── Sampling / GIS heat map ────────────────────────────────
+  showSamplingLayer: boolean;
+  setShowSamplingLayer: (v: boolean) => void;
+
+  samplingPanelOpen: boolean;
+  setSamplingPanelOpen: (v: boolean) => void;
+
+  samplingConfig: SamplingConfig;
+  updateSamplingConfig: (c: Partial<SamplingConfig>) => void;
+
+  /** Which analyte to heat-map: PFOA_ppt | PFOS_ppt | totalPFAS_ppt | lead_ppm */
+  samplingAnalyte: keyof AnalyteResults;
+  setSamplingAnalyte: (a: keyof AnalyteResults) => void;
+
+  /** Show the sampling arc/wedge zone polygon */
+  showArcZone: boolean;
+  setShowArcZone: (v: boolean) => void;
+
+  /** Compare mode: show model plume and sampling heatmap side-by-side */
+  compareMode: boolean;
+  setCompareMode: (v: boolean) => void;
 }
 
 const MIAMI_CENTER: ViewState = {
@@ -198,4 +226,24 @@ export const useMapStore = create<MapStore>((set) => ({
 
   nvidiaPanelOpen: false,
   setNvidiaPanelOpen: (nvidiaPanelOpen) => set({ nvidiaPanelOpen }),
+
+  // ── Sampling ───────────────────────────────────────────────
+  showSamplingLayer: false,
+  setShowSamplingLayer: (showSamplingLayer) => set({ showSamplingLayer }),
+
+  samplingPanelOpen: false,
+  setSamplingPanelOpen: (samplingPanelOpen) => set({ samplingPanelOpen }),
+
+  samplingConfig: DEFAULT_SAMPLING_CONFIG,
+  updateSamplingConfig: (c) =>
+    set((state) => ({ samplingConfig: { ...state.samplingConfig, ...c } })),
+
+  samplingAnalyte: 'PFOA_ppt',
+  setSamplingAnalyte: (samplingAnalyte) => set({ samplingAnalyte }),
+
+  showArcZone: true,
+  setShowArcZone: (showArcZone) => set({ showArcZone }),
+
+  compareMode: false,
+  setCompareMode: (compareMode) => set({ compareMode }),
 }));
