@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── MapLibre GL ──────────────────────────────────────────── */
+@import 'maplibre-gl/dist/maplibre-gl.css';
+
+:root {
+  --miami-ocean:    #0A2E4A;
+  --miami-teal:     #00B4D8;
+  --miami-cyan:     #90E0EF;
+  --miami-sand:     #F4E285;
+  --miami-coral:    #FF6B6B;
+  --miami-mangrove: #2D6A4F;
+  --miami-lime:     #74C69D;
+  --miami-night:    #0D1117;
+  --miami-panel:    #111827;
+  --waste-pfas:     #7C3AED;
+  --waste-danger:   #DC2626;
+  --nvidia-green:   #76B900;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: var(--miami-night);
+  color: #F9FAFB;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* ── Map canvas full-screen ─────────────────────────────────── */
+#miami-twin-map {
+  width: 100%;
+  height: 100%;
+}
+
+.maplibregl-canvas {
+  outline: none;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--miami-panel);
+}
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4B5563;
+}
+
+/* ── Glass panel utility ─────────────────────────────────────── */
+@layer components {
+  .glass-panel {
+    @apply bg-miami-panel border border-miami-border rounded-xl backdrop-blur-sm;
+    background: rgba(17, 24, 39, 0.92);
+  }
+
+  .layer-btn {
+    @apply flex flex-col items-center gap-1 px-3 py-2 rounded-lg border text-xs font-medium
+           transition-all duration-200 cursor-pointer select-none;
+  }
+
+  .layer-btn-active {
+    @apply border-miami-teal text-miami-teal bg-miami-teal/10;
+  }
+
+  .layer-btn-inactive {
+    @apply border-miami-border text-gray-400 bg-miami-panel hover:border-gray-500 hover:text-gray-200;
+  }
+
+  .waste-layer-btn {
+    @apply layer-btn border-waste-danger text-waste-danger bg-waste-danger/10
+           hover:bg-waste-danger/20 transition-all duration-200;
+  }
+
+  .nvidia-badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded text-xs font-bold;
+    background: var(--nvidia-green);
+    color: #000;
+  }
+
+  .pfas-particle {
+    @apply absolute rounded-full pointer-events-none;
+    background: radial-gradient(circle, #7C3AED 0%, #4C1D95 60%, transparent 100%);
+    animation: particle-drift 6s ease-in-out infinite;
+  }
+
+  .fire-glow {
+    box-shadow: 0 0 20px #FF6B1A, 0 0 40px #FF3D00, 0 0 80px #FF000040;
+    animation: fire-flicker 0.4s ease-in-out infinite alternate;
+  }
+}
+
+/* ── Time Slider custom track ────────────────────────────────── */
+input[type='range'].time-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  background: linear-gradient(to right, #00B4D8 0%, #7C3AED 50%, #DC2626 100%);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type='range'].time-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #00B4D8;
+  box-shadow: 0 0 8px #00B4D880;
+  cursor: pointer;
+}
+
+/* ── PFAS particle animation keyframes ──────────────────────── */
+@keyframes particle-drift {
+  0%   { transform: translate(0, 0) scale(1); opacity: 0.9; }
+  25%  { transform: translate(3px, -5px) scale(1.05); opacity: 0.7; }
+  50%  { transform: translate(6px, -10px) scale(1.1); opacity: 0.5; }
+  75%  { transform: translate(9px, -14px) scale(1.0); opacity: 0.3; }
+  100% { transform: translate(12px, -18px) scale(0.8); opacity: 0; }
+}
+
+@keyframes fire-flicker {
+  0%   { opacity: 0.85; filter: brightness(1); }
+  100% { opacity: 1;    filter: brightness(1.2); }
+}
+
+@keyframes scanline {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+/* ── Tooltip ─────────────────────────────────────────────────── */
+.map-tooltip {
+  @apply absolute z-50 pointer-events-none;
+  background: rgba(17, 24, 39, 0.95);
+  border: 1px solid #1F2937;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #F9FAFB;
+  min-width: 160px;
+  max-width: 280px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+}

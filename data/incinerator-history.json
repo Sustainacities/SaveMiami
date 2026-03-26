@@ -1,0 +1,113 @@
+{
+  "facility": {
+    "id": "MD-INC-001",
+    "name": "Miami-Dade Resources Recovery Facility",
+    "aka": ["Covanta Doral", "Miami-Dade WTE Plant", "NW 107th Ave Incinerator"],
+    "coordinates": [-80.3534, 25.8012],
+    "address": "NW 107th Ave & NW 74th St, Doral, FL 33178",
+    "stack_height_m": 85,
+    "boiler_units": 3,
+    "design_capacity_tpd": 3000,
+    "technology": "Mass-burn Waste-to-Energy (WtE)",
+    "certifications": ["EPA Title V Air Permit", "FDEP Solid Waste Permit"],
+    "pollution_controls": ["Dry Scrubbers", "Baghouse Filters", "SCR DeNOx", "Activated Carbon Injection"]
+  },
+  "operational_timeline": [
+    { "year": 1982, "event": "Facility construction begins", "phase": "construction" },
+    { "year": 1984, "event": "Unit 1 commissioned", "phase": "operational", "capacity_tpd": 1000 },
+    { "year": 1985, "event": "Units 2 & 3 commissioned — full capacity", "phase": "operational", "capacity_tpd": 3000 },
+    { "year": 1990, "event": "MACT standards upgrade — new scrubbers installed", "phase": "operational" },
+    { "year": 1995, "event": "First dioxin/furan monitoring violations", "phase": "violation", "violations": ["Dioxin", "Furan"] },
+    { "year": 2000, "event": "APC system upgraded — baghouse + activated carbon injection", "phase": "upgrade" },
+    { "year": 2005, "event": "PFAS contamination first detected in groundwater monitoring wells", "phase": "contamination_detected" },
+    { "year": 2010, "event": "Bottom ash characterized as Class I Hazardous Waste", "phase": "regulatory" },
+    { "year": 2015, "event": "Fly ash PFAS levels exceed EPA guidance", "phase": "contamination_elevated" },
+    { "year": 2019, "event": "Covanta contract renewal — community opposition begins", "phase": "community_action" },
+    { "year": 2020, "event": "COVID impacts — waste volumes decline 18%", "phase": "operational" },
+    { "year": 2021, "event": "EPA PFAS investigation initiated", "phase": "regulatory_investigation" },
+    { "year": 2022, "event": "Facility closure plan submitted to Miami-Dade County", "phase": "decommissioning" },
+    { "year": 2023, "month": 11, "day": 15, "event": "Major fire event — Units 1 and 2", "phase": "fire_event",
+      "fire_details": {
+        "start_date": "2023-11-15",
+        "end_date": "2023-11-19",
+        "duration_hours": 96,
+        "units_affected": [1, 2],
+        "waste_burned_tons": 8500,
+        "ash_released_tons": 320,
+        "plume_max_height_m": 2800,
+        "max_wind_speed_ms": 6.2,
+        "wind_direction_deg": 105,
+        "estimated_pfas_release_kg": 12.4,
+        "epa_emergency_response": true,
+        "fdep_emergency_order": true,
+        "air_quality_exceedances": ["PM2.5", "HCl", "Dioxin/Furan", "PFAS"],
+        "communities_affected": ["Doral", "Miami Lakes", "Medley", "Hialeah", "Sweetwater", "West Miami"]
+      }
+    },
+    { "year": 2024, "event": "Facility decommissioned. Ash storage on-site. Remediation planning underway.", "phase": "decommissioned" },
+    { "year": 2024, "month": 3, "event": "EPA Superfund preliminary assessment initiated", "phase": "superfund_assessment" }
+  ],
+  "ash_storage": {
+    "location": "On-site — northeast corner of facility",
+    "coordinates_approx": [-80.3510, 25.8030],
+    "total_tons": 180000,
+    "fly_ash_tons": 42000,
+    "bottom_ash_tons": 138000,
+    "containment": "HDPE-lined cells",
+    "liner_condition": "degraded — fire damage to northeast cell",
+    "leachate_detected": true,
+    "pfas_in_leachate_ppt": 8900,
+    "groundwater_depth_ft": 8,
+    "nearest_water_body": "Biscayne Aquifer (4.2 miles)",
+    "remediation_plan_submitted": false,
+    "estimated_remediation_cost_usd": 85000000,
+    "status": "active_concern"
+  },
+  "contaminant_summary": {
+    "pfas": {
+      "compounds_detected": ["PFOA", "PFOS", "PFHxS", "PFNA", "PFHpA", "PFBA", "PFPeA", "GenX"],
+      "max_groundwater_concentration_ppt": 8900,
+      "epa_mcl_ppt": 4,
+      "exceedance_factor": 2225,
+      "affected_radius_km": 40,
+      "primary_pathway": "atmospheric_deposition_then_groundwater"
+    },
+    "heavy_metals": {
+      "lead_ash_ppm": 1240,
+      "mercury_ash_ppm": 4.2,
+      "cadmium_ash_ppm": 98,
+      "arsenic_ash_ppm": 28
+    },
+    "dioxins_furans": {
+      "ash_toxic_equivalent_ngTEQ_kg": 0.8,
+      "stack_emission_ngTEQ_Nm3": 0.12
+    }
+  },
+  "wind_data": {
+    "station": "MIA — Miami International Airport ASOS",
+    "station_id": "KMIA",
+    "lat": 25.7959,
+    "lon": -80.2870,
+    "prevailing_wind_direction_deg": 105,
+    "prevailing_wind_speed_ms": 4.5,
+    "fire_period_winds": [
+      { "date": "2023-11-15", "direction_deg": 110, "speed_ms": 5.1, "gust_ms": 8.4 },
+      { "date": "2023-11-16", "direction_deg": 95,  "speed_ms": 6.2, "gust_ms": 10.1 },
+      { "date": "2023-11-17", "direction_deg": 115, "speed_ms": 4.8, "gust_ms": 7.2 },
+      { "date": "2023-11-18", "direction_deg": 120, "speed_ms": 3.9, "gust_ms": 5.8 },
+      { "date": "2023-11-19", "direction_deg": 105, "speed_ms": 4.2, "gust_ms": 6.0 }
+    ]
+  },
+  "affected_communities": [
+    { "name": "Doral",       "distance_km": 2.1,  "population": 81400, "risk": "critical" },
+    { "name": "Medley",      "distance_km": 3.8,  "population": 1200,  "risk": "critical" },
+    { "name": "Miami Lakes", "distance_km": 5.2,  "population": 31000, "risk": "high" },
+    { "name": "Hialeah",     "distance_km": 8.1,  "population": 225000,"risk": "high" },
+    { "name": "Sweetwater",  "distance_km": 9.4,  "population": 14000, "risk": "medium" },
+    { "name": "West Miami",  "distance_km": 12.3, "population": 6200,  "risk": "medium" },
+    { "name": "Coral Gables","distance_km": 14.8, "population": 49700, "risk": "low_medium" },
+    { "name": "Miami Beach", "distance_km": 22.1, "population": 82000, "risk": "low" },
+    { "name": "Kendall",     "distance_km": 16.5, "population": 80000, "risk": "low_medium" },
+    { "name": "Homestead",   "distance_km": 38.4, "population": 70000, "risk": "trace" }
+  ]
+}
