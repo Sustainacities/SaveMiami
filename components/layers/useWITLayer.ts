@@ -1,7 +1,7 @@
 /**
  * useWITLayer — Waste Impact Tracker deck.gl Layer Hook
  * ─────────────────────────────────────────────────────────────
- * Renders EDF Waste Impact Tracker data for FL landfill 521
+ * Renders Full Circle Future Waste Impact Tracker data for FL landfill 521
  * (Medley Landfill, Miami-Dade) on the Miami Digital Twin map.
  *
  * Layers:

@@ -3,7 +3,7 @@
 /**
  * WITPanel — Waste Impact Tracker Data Panel
  * ─────────────────────────────────────────────────────────────
- * Displays EDF Waste Impact Tracker data for Florida landfill #521
+ * Displays Full Circle Future · WIT data for Florida landfill #521
  * (Medley Landfill, Miami-Dade County).
  *
  * Source: https://www.wasteimpacttracker.org/#/state/FL?landfillId=521&plume=false
@@ -67,7 +67,7 @@ export function WITPanel() {
             <div>
               <p className="font-semibold text-sm text-white leading-none">WIT Landfill #521</p>
               <p className="text-[9px] text-gray-500 leading-none mt-0.5">
-                EDF Waste Impact Tracker · FL
+                Full Circle Future · WIT · FL
               </p>
             </div>
           </div>

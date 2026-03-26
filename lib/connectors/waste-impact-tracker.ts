@@ -2,7 +2,8 @@
  * Waste Impact Tracker (WIT) Data Connector
  * ─────────────────────────────────────────────────────────────
  * Source: https://www.wasteimpacttracker.org/#/state/FL?landfillId=521&plume=false
- * Built by: Environmental Defense Fund (EDF)
+ * Built by: Full Circle Future (fullcirclefuture.org)
+ *           Technical partner: ZevRoss (data pipeline + React/Mapbox app)
  *
  * Underlying data sources pulled directly from their public APIs:
  *
