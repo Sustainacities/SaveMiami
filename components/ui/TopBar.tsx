@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Waves, Menu, X, ExternalLink, FlaskConical } from 'lucide-react';
+import { Waves, Menu, X, ExternalLink, FlaskConical, Trash2 } from 'lucide-react';
 import { useMapStore } from '@/store/mapStore';
 
 export function TopBar() {
@@ -10,6 +10,8 @@ export function TopBar() {
     wastePanelOpen, setWastePanelOpen,
     samplingPanelOpen, setSamplingPanelOpen,
     showSamplingLayer, setShowSamplingLayer,
+    witPanelOpen, setWITPanelOpen,
+    showWITLayer, setShowWITLayer,
   } = useMapStore();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -55,6 +57,26 @@ export function TopBar() {
           }`}
         >
           🗑️ WASTE
+        </button>
+
+        {/* WIT / EDF Landfill 521 button */}
+        <button
+          onClick={() => {
+            setWITPanelOpen(!witPanelOpen);
+            if (!showWITLayer) setShowWITLayer(true);
+          }}
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
+            witPanelOpen
+              ? 'bg-amber-500/20 text-amber-400 border-amber-500/60'
+              : 'border-amber-500/40 text-amber-400 hover:bg-amber-500/10'
+          }`}
+          title="Waste Impact Tracker — EDF · FL Landfill #521 (Medley)"
+        >
+          <Trash2 size={12} />
+          WIT
+          {showWITLayer && (
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse-slow" />
+          )}
         </button>
 
         {/* GIS SAMPLING button */}

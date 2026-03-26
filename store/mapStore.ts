@@ -133,6 +133,18 @@ export interface MapStore {
   /** Compare mode: show model plume and sampling heatmap side-by-side */
   compareMode: boolean;
   setCompareMode: (v: boolean) => void;
+
+  // ── Waste Impact Tracker (WIT) — EDF Landfill #521 ────────
+  showWITLayer: boolean;
+  setShowWITLayer: (v: boolean) => void;
+  showWITPlume: boolean;
+  setShowWITPlume: (v: boolean) => void;
+  showWITEJRing: boolean;
+  setShowWITEJRing: (v: boolean) => void;
+  witYear: number;
+  setWitYear: (y: number) => void;
+  witPanelOpen: boolean;
+  setWITPanelOpen: (v: boolean) => void;
 }
 
 const MIAMI_CENTER: ViewState = {
@@ -246,4 +258,16 @@ export const useMapStore = create<MapStore>((set) => ({
 
   compareMode: false,
   setCompareMode: (compareMode) => set({ compareMode }),
+
+  // ── WIT ────────────────────────────────────────────────────
+  showWITLayer: true,
+  setShowWITLayer: (showWITLayer) => set({ showWITLayer }),
+  showWITPlume: false,
+  setShowWITPlume: (showWITPlume) => set({ showWITPlume }),
+  showWITEJRing: true,
+  setShowWITEJRing: (showWITEJRing) => set({ showWITEJRing }),
+  witYear: 2023,
+  setWitYear: (witYear) => set({ witYear }),
+  witPanelOpen: false,
+  setWITPanelOpen: (witPanelOpen) => set({ witPanelOpen }),
 }));

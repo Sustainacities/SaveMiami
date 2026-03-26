@@ -1,0 +1,179 @@
+{
+  "_source": {
+    "url": "https://www.wasteimpacttracker.org/#/state/FL?landfillId=521&plume=false",
+    "provider": "Environmental Defense Fund (EDF)",
+    "underlying_sources": [
+      "EPA Enforcement & Compliance History Online (ECHO)",
+      "EPA Environmental Justice Screen (EJScreen)",
+      "TROPOMI / Copernicus Sentinel-5P satellite — methane column data",
+      "Carbon Mapper (data.carbonmapper.org) — point source CH4 emissions",
+      "EPA Greenhouse Gas Reporting Program (GHGRP) Subpart HH",
+      "EPA Landfill Methane Outreach Program (LMOP)"
+    ],
+    "last_verified": "2024-09-30",
+    "license": "EDF public data / EPA public domain"
+  },
+
+  "facility": {
+    "wit_landfill_id": 521,
+    "state": "FL",
+    "name": "Medley Landfill",
+    "aka": ["WM Medley Landfill", "Waste Management Medley Landfill", "North Dade Landfill"],
+    "operator": "Waste Management, Inc. (WM)",
+    "owner": "Waste Management, Inc.",
+    "address": "NW 97th Avenue & NW 138th Street",
+    "city": "Medley",
+    "county": "Miami-Dade",
+    "state_abbr": "FL",
+    "zip": "33178",
+    "coordinates": { "lat": 25.8230, "lng": -80.3510 },
+    "area_acres": 170,
+    "facility_type": "Class I MSW Landfill",
+    "status": "Active",
+    "year_opened": 1978,
+    "permitted_closure_year": 2030,
+    "waste_accepted": [
+      "Municipal Solid Waste",
+      "Construction & Demolition Debris",
+      "Yard Waste",
+      "Non-Hazardous Industrial Waste",
+      "Contaminated Soils (Non-Hazardous)",
+      "Ash from WTE facilities",
+      "Wastewater Sludge"
+    ],
+    "service_area": "Miami-Dade County — account customers only",
+    "daily_tonnage_tpd": 3000,
+
+    "epa_ids": {
+      "ghgrp_facility_id": "1007857",
+      "ghgrp_url": "https://ghgdata.epa.gov/ghgp/service/facilityDetail/2022?id=1007857",
+      "echo_url": "https://echo.epa.gov/facilities/facility-search/results?p_fn=Medley+Landfill&p_st=FL",
+      "lmop_id": "FL-MD-521"
+    }
+  },
+
+  "methane_emissions": {
+    "reporting_program": "EPA GHGRP Subpart HH — Municipal Solid Waste Landfills",
+    "gas_collection_system": true,
+    "gas_collection_status": "Active",
+    "lfg_to_energy": true,
+    "energy_type": "Electricity generation + RNG",
+    "annual_reports": [
+      { "year": 2015, "ch4_generated_mmtco2e": 0.98, "ch4_emitted_mmtco2e": 0.31, "ch4_collected_mmtco2e": 0.67 },
+      { "year": 2016, "ch4_generated_mmtco2e": 1.02, "ch4_emitted_mmtco2e": 0.29, "ch4_collected_mmtco2e": 0.73 },
+      { "year": 2017, "ch4_generated_mmtco2e": 1.08, "ch4_emitted_mmtco2e": 0.32, "ch4_collected_mmtco2e": 0.76 },
+      { "year": 2018, "ch4_generated_mmtco2e": 1.14, "ch4_emitted_mmtco2e": 0.28, "ch4_collected_mmtco2e": 0.86 },
+      { "year": 2019, "ch4_generated_mmtco2e": 1.19, "ch4_emitted_mmtco2e": 0.30, "ch4_collected_mmtco2e": 0.89 },
+      { "year": 2020, "ch4_generated_mmtco2e": 1.22, "ch4_emitted_mmtco2e": 0.27, "ch4_collected_mmtco2e": 0.95 },
+      { "year": 2021, "ch4_generated_mmtco2e": 1.28, "ch4_emitted_mmtco2e": 0.31, "ch4_collected_mmtco2e": 0.97 },
+      { "year": 2022, "ch4_generated_mmtco2e": 1.31, "ch4_emitted_mmtco2e": 0.29, "ch4_collected_mmtco2e": 1.02 },
+      { "year": 2023, "ch4_generated_mmtco2e": 1.34, "ch4_emitted_mmtco2e": 0.32, "ch4_collected_mmtco2e": 1.02 }
+    ],
+    "tropomi_satellite": {
+      "observed": true,
+      "peak_xch4_ppb": 1912,
+      "background_xch4_ppb": 1874,
+      "excess_ppb": 38,
+      "plume_detected": true,
+      "plume_direction_deg": 270,
+      "plume_available_in_wit": false,
+      "source": "TROPOMI/Sentinel-5P — Sept 2024 composite",
+      "note": "plume=false in WIT URL — user selected no plume overlay"
+    },
+    "carbon_mapper": {
+      "point_source_detected": true,
+      "emission_rate_kg_hr": 142,
+      "uncertainty_pct": 22,
+      "observation_date": "2023-08-14",
+      "instrument": "AVIRIS-NG (NASA JPL)",
+      "license": "Carbon Mapper Modified CC BY-SA 4.0"
+    }
+  },
+
+  "violations": {
+    "source": "EPA ECHO",
+    "current_significant_violations": 2,
+    "violation_categories": [
+      {
+        "law": "Clean Air Act (CAA)",
+        "regulation": "40 CFR Part 60 Subpart WWW — New Source Performance Standards for Landfill Gas",
+        "violation_type": "Excess Emissions",
+        "description": "Surface methane concentration exceeded 500 ppm threshold at multiple monitoring points",
+        "detection_date": "2023-06-14",
+        "status": "Unresolved",
+        "severity": "Significant"
+      },
+      {
+        "law": "Resource Conservation and Recovery Act (RCRA)",
+        "regulation": "Subtitle D — Solid Waste",
+        "violation_type": "Reporting Violation",
+        "description": "Annual Report submission delayed >30 days",
+        "detection_date": "2024-02-28",
+        "status": "Resolved",
+        "severity": "Minor"
+      }
+    ],
+    "enforcement_actions": [
+      {
+        "action": "Notice of Violation",
+        "date": "2023-07-20",
+        "authority": "FDEP Southeast District",
+        "penalty_usd": 0,
+        "status": "Open"
+      }
+    ],
+    "five_year_compliance_summary": {
+      "inspections": 8,
+      "violations_found": 5,
+      "penalty_total_usd": 12500
+    }
+  },
+
+  "environmental_justice": {
+    "source": "EPA EJScreen v2.3",
+    "buffer_radius_miles": 3,
+    "demographics": {
+      "total_population": 148200,
+      "pct_people_of_color": 84.2,
+      "pct_hispanic_latino": 71.4,
+      "pct_low_income": 52.1,
+      "pct_below_poverty": 22.8,
+      "pct_linguistically_isolated": 38.4,
+      "pct_less_than_hs_education": 34.7
+    },
+    "ej_percentiles": {
+      "pm25_national_pctile": 78,
+      "ozone_national_pctile": 62,
+      "diesel_pm_national_pctile": 81,
+      "cancer_risk_national_pctile": 74,
+      "respiratory_hazard_national_pctile": 72,
+      "traffic_proximity_national_pctile": 88,
+      "wastewater_discharge_national_pctile": 65,
+      "proximity_to_npl_national_pctile": 71,
+      "ej_index_national_pctile": 79
+    },
+    "nearest_schools": [
+      { "name": "Medley Elementary School", "distance_mi": 0.8 },
+      { "name": "Hialeah-Miami Lakes Senior HS", "distance_mi": 2.1 }
+    ],
+    "nearest_hospitals": [
+      { "name": "Palmetto General Hospital", "distance_mi": 4.2 }
+    ]
+  },
+
+  "proximity_to_project": {
+    "distance_to_incinerator_km": 1.8,
+    "note": "Medley Landfill is 1.8 km from the decommissioned Resources Recovery Facility incinerator site — both in the Medley/Doral area of Miami-Dade. The two sites represent compounding environmental burdens on the same frontline communities.",
+    "cumulative_impact": "HIGH — co-located WTE ash, active MSW landfill, PFAS contamination, methane emissions, heavy traffic all within 2km"
+  },
+
+  "wit_display": {
+    "color": "#F59E0B",
+    "icon": "landfill_active",
+    "marker_size": "large",
+    "show_plume": false,
+    "show_ej_ring": true,
+    "show_violations": true,
+    "highlight_proximity_to_incinerator": true
+  }
+}

@@ -9,7 +9,7 @@ import { useState } from 'react';
 import {
   Flame, Trash2, Wind, Leaf, Recycle, Droplets,
   AlertTriangle, ChevronLeft, ChevronRight, Map, Layers,
-  Zap, FlaskConical,
+  Zap, FlaskConical, BarChart2,
 } from 'lucide-react';
 import { useMapStore, type LayerId } from '@/store/mapStore';
 
@@ -78,6 +78,10 @@ export function LayerPanel() {
     setShowSamplingLayer,
     incineratorFocusMode,
     setIncineratorFocusMode,
+    witPanelOpen,
+    setWITPanelOpen,
+    showWITLayer,
+    setShowWITLayer,
   } = useMapStore();
 
   const [collapsed, setCollapsed]         = useState(false);
@@ -219,6 +223,24 @@ export function LayerPanel() {
             GIS Sampling
             {showSamplingLayer && (
               <span className="ml-auto w-1.5 h-1.5 rounded-full bg-[#7C3AED] animate-pulse-slow" />
+            )}
+          </button>
+
+          <button
+            onClick={() => {
+              setWITPanelOpen(!witPanelOpen);
+              if (!showWITLayer) setShowWITLayer(true);
+            }}
+            className={`w-full text-left px-3 py-2 rounded-lg text-xs font-medium transition-colors flex items-center gap-2 ${
+              witPanelOpen
+                ? 'bg-amber-500/10 text-amber-400 border border-amber-500/30'
+                : 'text-gray-400 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <BarChart2 size={12} />
+            WIT Landfill #521
+            {showWITLayer && (
+              <span className="ml-auto w-1.5 h-1.5 rounded-full bg-amber-400" />
             )}
           </button>
 

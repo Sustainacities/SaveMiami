@@ -19,11 +19,13 @@ import { LayerPanel } from '@/components/panels/LayerPanel';
 import { WasteControlPanel } from '@/components/panels/WasteControlPanel';
 import { NvidiaSimPanel } from '@/components/panels/NvidiaSimPanel';
 import { SamplingPanel } from '@/components/panels/SamplingPanel';
+import { WITPanel } from '@/components/panels/WITPanel';
 import { TimeSlider } from '@/components/map/TimeSlider';
 import { TopBar } from '@/components/ui/TopBar';
 import { MapTooltip } from '@/components/ui/MapTooltip';
 import { useWasteLayers } from '@/components/layers/useWasteLayers';
 import { useSamplingLayer } from '@/components/layers/useSamplingLayer';
+import { useWITLayer } from '@/components/layers/useWITLayer';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 const MAP_STYLE =
@@ -38,6 +40,7 @@ export default function MiamiDigitalTwin() {
     wastePanelOpen,
     nvidiaPanelOpen,
     samplingPanelOpen,
+    witPanelOpen,
     hoverInfo,
     setHoverInfo,
     activeLayers,
@@ -49,7 +52,8 @@ export default function MiamiDigitalTwin() {
   // ── Deck.gl layers (waste, PFAS, wind, zero-waste...) ─────
   const wasteLayers    = useWasteLayers();
   const samplingLayers = useSamplingLayer();
-  const deckLayers     = [...wasteLayers, ...samplingLayers];
+  const witLayers      = useWITLayer();
+  const deckLayers     = [...wasteLayers, ...samplingLayers, ...witLayers];
 
   // ── Tooltip on hover ──────────────────────────────────────
   const handleHover = useCallback(
@@ -132,6 +136,9 @@ export default function MiamiDigitalTwin() {
 
       {/* ── Sampling / GIS heatmap panel ─────────────────── */}
       {samplingPanelOpen && <SamplingPanel />}
+
+      {/* ── Waste Impact Tracker panel (EDF / landfill 521) ── */}
+      {witPanelOpen && <WITPanel />}
 
       {/* ── Time slider (bottom) ─────────────────────────── */}
       <TimeSlider />
