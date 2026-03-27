@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Waves, Menu, X, ExternalLink, FlaskConical, Trash2 } from 'lucide-react';
+import { Waves, Menu, X, ExternalLink, FlaskConical, Trash2, Terminal, Sparkles, BarChart } from 'lucide-react';
 import { useMapStore } from '@/store/mapStore';
 
 export function TopBar() {
@@ -12,6 +12,9 @@ export function TopBar() {
     showSamplingLayer, setShowSamplingLayer,
     witPanelOpen, setWITPanelOpen,
     showWITLayer, setShowWITLayer,
+    particleLayerActive, setParticleLayerActive,
+    simConsoleOpen, setSimConsoleOpen,
+    showTimelineView, setShowTimelineView,
   } = useMapStore();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -77,6 +80,51 @@ export function TopBar() {
           {showWITLayer && (
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse-slow" />
           )}
+        </button>
+
+        {/* Particle physics toggle */}
+        <button
+          onClick={() => setParticleLayerActive(!particleLayerActive)}
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
+            particleLayerActive
+              ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/60'
+              : 'border-emerald-700/40 text-emerald-600 hover:text-emerald-400 hover:bg-emerald-500/10'
+          }`}
+          title="Particle physics — PFAS/ash Lagrangian plume simulation"
+        >
+          <Sparkles size={12} />
+          PARTICLES
+          {particleLayerActive && (
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          )}
+        </button>
+
+        {/* Timeline chart toggle */}
+        <button
+          onClick={() => setShowTimelineView(!showTimelineView)}
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
+            showTimelineView
+              ? 'bg-miami-teal/20 text-miami-teal border-miami-teal/60'
+              : 'border-miami-teal/30 text-miami-teal/60 hover:text-miami-teal hover:bg-miami-teal/10'
+          }`}
+          title="Historical timeline graphical view"
+        >
+          <BarChart size={12} />
+          TIMELINE
+        </button>
+
+        {/* Simulation CLI console */}
+        <button
+          onClick={() => setSimConsoleOpen(!simConsoleOpen)}
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border ${
+            simConsoleOpen
+              ? 'bg-[#76B900]/15 text-[#76B900] border-[#76B900]/50'
+              : 'border-[#76B900]/30 text-[#76B900]/60 hover:text-[#76B900] hover:bg-[#76B900]/10'
+          }`}
+          title="Simulation console — real-time data + logic CLI"
+        >
+          <Terminal size={12} />
+          CLI
         </button>
 
         {/* GIS SAMPLING button */}

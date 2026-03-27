@@ -21,7 +21,18 @@ export type LayerId =
   | 'recycling'
   | 'composting'
   | 'epa_superfund'
-  | 'sampling';
+  | 'sampling'
+  | 'particles';
+
+// ── Simulation console log types ──────────────────────────────
+export type LogLevel = 'SIM' | 'DATA' | 'CALC' | 'PFAS' | 'WARN' | 'WIT' | 'PART' | 'ERR';
+export interface LogEntry {
+  id: number;
+  ts: number;
+  level: LogLevel;
+  msg: string;
+  detail?: string;
+}
 
 // ── Simulation modes ───────────────────────────────────────────
 export type SimulationMode = 'historical' | 'live' | 'scenario';
@@ -134,7 +145,23 @@ export interface MapStore {
   compareMode: boolean;
   setCompareMode: (v: boolean) => void;
 
-  // ── Waste Impact Tracker (WIT) — EDF Landfill #521 ────────
+  // ── Particle physics layer ─────────────────────────────────
+  particleLayerActive: boolean;
+  setParticleLayerActive: (v: boolean) => void;
+
+  // ── Simulation console ─────────────────────────────────────
+  simConsoleOpen: boolean;
+  setSimConsoleOpen: (v: boolean) => void;
+  simLogs: LogEntry[];
+  pushSimLog: (entry: Omit<LogEntry, 'id' | 'ts'>) => void;
+  clearSimLogs: () => void;
+  _logSeq: number;
+
+  // ── Timeline graphical view ────────────────────────────────
+  showTimelineView: boolean;
+  setShowTimelineView: (v: boolean) => void;
+
+  // ── Waste Impact Tracker (WIT) — Full Circle Future #521 ──
   showWITLayer: boolean;
   setShowWITLayer: (v: boolean) => void;
   showWITPlume: boolean;
@@ -258,6 +285,29 @@ export const useMapStore = create<MapStore>((set) => ({
 
   compareMode: false,
   setCompareMode: (compareMode) => set({ compareMode }),
+
+  // ── Particle layer ─────────────────────────────────────────
+  particleLayerActive: false,
+  setParticleLayerActive: (particleLayerActive) => set({ particleLayerActive }),
+
+  // ── Simulation console ─────────────────────────────────────
+  simConsoleOpen: false,
+  setSimConsoleOpen: (simConsoleOpen) => set({ simConsoleOpen }),
+  simLogs: [],
+  _logSeq: 0,
+  pushSimLog: (entry) =>
+    set((state) => ({
+      _logSeq: state._logSeq + 1,
+      simLogs: [
+        ...state.simLogs.slice(-199), // circular buffer — max 200 lines
+        { ...entry, id: state._logSeq, ts: Date.now() },
+      ],
+    })),
+  clearSimLogs: () => set({ simLogs: [], _logSeq: 0 }),
+
+  // ── Timeline view ──────────────────────────────────────────
+  showTimelineView: false,
+  setShowTimelineView: (showTimelineView) => set({ showTimelineView }),
 
   // ── WIT ────────────────────────────────────────────────────
   showWITLayer: true,

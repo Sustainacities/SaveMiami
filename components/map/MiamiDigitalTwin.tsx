@@ -26,6 +26,10 @@ import { MapTooltip } from '@/components/ui/MapTooltip';
 import { useWasteLayers } from '@/components/layers/useWasteLayers';
 import { useSamplingLayer } from '@/components/layers/useSamplingLayer';
 import { useWITLayer } from '@/components/layers/useWITLayer';
+import { useParticleLayer } from '@/components/layers/useParticleLayer';
+import { SimConsole } from '@/components/ui/SimConsole';
+import { TimelineView } from '@/components/map/TimelineView';
+import { useSimLogger } from '@/lib/simulation/sim-logger';
 import 'maplibre-gl/dist/maplibre-gl.css';
 
 const MAP_STYLE =
@@ -49,11 +53,15 @@ export default function MiamiDigitalTwin() {
 
   const [cursor, setCursor] = useState<string>('grab');
 
-  // ── Deck.gl layers (waste, PFAS, wind, zero-waste...) ─────
+  // ── Deck.gl layers (waste, PFAS, particles, WIT...) ───────
   const wasteLayers    = useWasteLayers();
   const samplingLayers = useSamplingLayer();
   const witLayers      = useWITLayer();
-  const deckLayers     = [...wasteLayers, ...samplingLayers, ...witLayers];
+  const particleLayers = useParticleLayer();
+  const deckLayers     = [...wasteLayers, ...samplingLayers, ...witLayers, ...particleLayers];
+
+  // ── Auto-log simulation events to SimConsole ───────────────
+  useSimLogger();
 
   // ── Tooltip on hover ──────────────────────────────────────
   const handleHover = useCallback(
@@ -137,8 +145,14 @@ export default function MiamiDigitalTwin() {
       {/* ── Sampling / GIS heatmap panel ─────────────────── */}
       {samplingPanelOpen && <SamplingPanel />}
 
-      {/* ── Waste Impact Tracker panel (EDF / landfill 521) ── */}
+      {/* ── Waste Impact Tracker panel (FCF / landfill 521) ── */}
       {witPanelOpen && <WITPanel />}
+
+      {/* ── Simulation console (bottom-left) ─────────────── */}
+      <SimConsole />
+
+      {/* ── Graphical timeline view (above time slider) ───── */}
+      <TimelineView />
 
       {/* ── Time slider (bottom) ─────────────────────────── */}
       <TimeSlider />
