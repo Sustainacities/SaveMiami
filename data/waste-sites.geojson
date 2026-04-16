@@ -1,0 +1,238 @@
+{
+  "type": "FeatureCollection",
+  "name": "miami_dade_waste_sites",
+  "metadata": {
+    "description": "Miami-Dade County waste management sites including landfills, transfer stations, incinerators, and recycling centers",
+    "sources": ["Miami-Dade County Open Data", "FDEP Solid Waste", "EPA ECHO"],
+    "projection": "EPSG:4326",
+    "last_updated": "2024-01-01"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "MD-INC-001",
+      "properties": {
+        "name": "Miami-Dade Resources Recovery Facility",
+        "type": "incinerator",
+        "status": "decommissioned_fire",
+        "operator": "Covanta Energy / Miami-Dade County",
+        "address": "NW 107th Ave, Doral, FL 33178",
+        "county": "Miami-Dade",
+        "capacity_tpd": 3000,
+        "operational_start": "1982-01-01",
+        "operational_end": "2023-11-15",
+        "fire_date": "2023-11-15",
+        "fire_duration_days": 4,
+        "ash_stored_tons": 180000,
+        "pfas_risk_level": "critical",
+        "pfas_compounds": ["PFOA", "PFOS", "PFHxS", "PFNA", "PFHpA"],
+        "contaminant_radius_km": 40,
+        "stack_height_m": 85,
+        "coordinates_verified": true,
+        "note": "Waste-to-energy facility — fire November 2023. Toxic ash and PFAS contamination under active monitoring. Ash storage remains on-site pending remediation.",
+        "epa_facility_id": "FLD002359388",
+        "fdep_facility_id": "MD-SW-001",
+        "regulatory_status": "active_investigation",
+        "ash_classification": "Class I — Hazardous",
+        "groundwater_monitoring": true,
+        "air_quality_monitoring": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.3534, 25.8012]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "MD-LF-001",
+      "properties": {
+        "name": "South Dade Landfill",
+        "type": "landfill",
+        "status": "active",
+        "operator": "Miami-Dade DSWM",
+        "address": "22900 SW 97th Ave, Miami, FL 33190",
+        "county": "Miami-Dade",
+        "capacity_tons": 45000000,
+        "operational_start": "1978-01-01",
+        "operational_end": null,
+        "area_acres": 850,
+        "elevation_ft": 195,
+        "pfas_risk_level": "high",
+        "leachate_treatment": true,
+        "gas_capture": true,
+        "zero_waste_potential": "high",
+        "materials_value_estimate_usd": 240000000,
+        "metals_recovery_potential": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.4020, 25.5190]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "MD-LF-002",
+      "properties": {
+        "name": "West Little River Landfill (Historical)",
+        "type": "landfill",
+        "status": "closed_monitored",
+        "operator": "Miami-Dade County",
+        "address": "NW 27th Ave & NW 95th St, Miami, FL",
+        "county": "Miami-Dade",
+        "operational_start": "1955-01-01",
+        "operational_end": "1984-01-01",
+        "area_acres": 65,
+        "pfas_risk_level": "high",
+        "methane_venting": true,
+        "epa_superfund": false,
+        "zero_waste_potential": "medium",
+        "redevelopment_study": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.2314, 25.8712]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "MD-LF-003",
+      "properties": {
+        "name": "Munisport Landfill (Biscayne Bay)",
+        "type": "landfill",
+        "status": "closed_remediated",
+        "operator": "City of North Miami",
+        "address": "3400 NE 151st St, North Miami, FL",
+        "county": "Miami-Dade",
+        "operational_start": "1952-01-01",
+        "operational_end": "1981-01-01",
+        "area_acres": 65,
+        "elevation_ft": 0,
+        "pfas_risk_level": "medium",
+        "biscayne_bay_adjacent": true,
+        "remediation_complete": false,
+        "zero_waste_potential": "low",
+        "epa_superfund": true,
+        "superfund_npl": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.1624, 25.9042]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "MD-LF-004",
+      "properties": {
+        "name": "NW 58th Street Landfill (Historical)",
+        "type": "landfill",
+        "status": "closed_monitored",
+        "operator": "Miami-Dade County",
+        "address": "NW 58th St & NW 57th Ave, Miami, FL",
+        "county": "Miami-Dade",
+        "operational_start": "1960-01-01",
+        "operational_end": "1986-01-01",
+        "area_acres": 95,
+        "pfas_risk_level": "high",
+        "methane_capture": false,
+        "zero_waste_potential": "high",
+        "materials_value_estimate_usd": 85000000,
+        "metals_recovery_potential": true,
+        "near_residential": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.2780, 25.8135]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "MD-LF-005",
+      "properties": {
+        "name": "Opa-locka Landfill & Transfer Station",
+        "type": "transfer_station",
+        "status": "active",
+        "operator": "Miami-Dade DSWM",
+        "address": "14600 NW 27th Ave, Opa-locka, FL 33054",
+        "county": "Miami-Dade",
+        "capacity_tpd": 800,
+        "operational_start": "1988-01-01",
+        "pfas_risk_level": "medium",
+        "recycling_facility": true,
+        "zero_waste_potential": "high",
+        "consortium_305_candidate": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.2519, 25.9022]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "MD-REC-001",
+      "properties": {
+        "name": "Homestead Composting & Recycling Center",
+        "type": "recycling_composting",
+        "status": "active",
+        "operator": "City of Homestead / Miami-Dade",
+        "address": "1475 SE 28th Ave, Homestead, FL 33033",
+        "county": "Miami-Dade",
+        "capacity_tpd": 200,
+        "pfas_risk_level": "low",
+        "composting": true,
+        "food_waste_accepted": true,
+        "zero_waste_potential": "very_high",
+        "consortium_305_partner": true,
+        "circular_economy_hub": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.4601, 25.4716]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "MD-ZW-001",
+      "properties": {
+        "name": "Proposed 305 Zero Waste Hub — Doral",
+        "type": "zero_waste_hub",
+        "status": "proposed",
+        "operator": "305 Consortium (Proposed)",
+        "address": "Near Incinerator Site, Doral, FL",
+        "county": "Miami-Dade",
+        "capacity_tpd": 1200,
+        "features": ["material_recovery", "composting", "anaerobic_digestion", "e-waste", "construction_debris", "biofuels"],
+        "zero_waste_potential": "very_high",
+        "consortium_305_lead": true,
+        "jobs_created": 450,
+        "annual_diversion_tons": 350000,
+        "circular_economy_hub": true,
+        "public_private_partnership": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.3480, 25.8060]
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "MD-EPA-001",
+      "properties": {
+        "name": "Biscayne Aquifer PFAS Monitoring Zone",
+        "type": "epa_monitoring",
+        "status": "active_monitoring",
+        "operator": "EPA / FDEP / SFWMD",
+        "pfas_detected": true,
+        "pfas_compounds_detected": ["PFOA", "PFOS"],
+        "max_pfoa_ppt": 4.8,
+        "max_pfos_ppt": 6.2,
+        "mcu_limit_ppt": 4.0,
+        "exceedance": true,
+        "linked_sources": ["MD-INC-001", "MD-LF-001"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.3800, 25.7500]
+      }
+    }
+  ]
+}

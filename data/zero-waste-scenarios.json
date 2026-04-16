@@ -1,0 +1,130 @@
+{
+  "scenarios": {
+    "status_quo": {
+      "name": "Status Quo (2024 Baseline)",
+      "year": 2024,
+      "diversion_rate_pct": 18,
+      "landfill_tons_year": 3200000,
+      "recycling_tons_year": 580000,
+      "composting_tons_year": 95000,
+      "wte_tons_year": 0,
+      "co2_eq_tons_year": 1850000,
+      "cost_per_ton_usd": 72,
+      "jobs": 1200,
+      "color": "#DC2626"
+    },
+    "zero_waste_2030": {
+      "name": "Zero Waste Miami 2030",
+      "year": 2030,
+      "diversion_rate_pct": 90,
+      "landfill_tons_year": 380000,
+      "recycling_tons_year": 1200000,
+      "composting_tons_year": 450000,
+      "anaerobic_digestion_tons_year": 280000,
+      "wte_tons_year": 0,
+      "co2_eq_tons_year": 210000,
+      "cost_per_ton_usd": 58,
+      "jobs": 3800,
+      "color": "#10B981"
+    },
+    "circular_economy": {
+      "name": "Circular Economy 2035",
+      "year": 2035,
+      "diversion_rate_pct": 96,
+      "landfill_tons_year": 120000,
+      "recycling_tons_year": 1580000,
+      "composting_tons_year": 680000,
+      "anaerobic_digestion_tons_year": 420000,
+      "industrial_symbiosis_tons_year": 380000,
+      "wte_tons_year": 0,
+      "co2_eq_tons_year": 48000,
+      "cost_per_ton_usd": 44,
+      "jobs": 6200,
+      "color": "#00B4D8"
+    },
+    "consortium_305": {
+      "name": "305 Consortium Model",
+      "year": 2030,
+      "description": "Public-private partnership cooperative led by 305 Consortium, leveraging historical landfill assets for zero waste infrastructure",
+      "diversion_rate_pct": 88,
+      "landfill_tons_year": 450000,
+      "recycling_tons_year": 1100000,
+      "composting_tons_year": 380000,
+      "anaerobic_digestion_tons_year": 240000,
+      "materials_mining_historical_landfills_tons_year": 120000,
+      "wte_tons_year": 0,
+      "co2_eq_tons_year": 280000,
+      "cost_per_ton_usd": 52,
+      "jobs": 4200,
+      "revenue_from_materials_usd_year": 48000000,
+      "color": "#F4E285",
+      "hubs": [
+        {
+          "id": "hub-doral",
+          "name": "305 Zero Waste Hub — Doral (Incinerator Site Redevelopment)",
+          "coordinates": [-80.3480, 25.8060],
+          "capacity_tpd": 1200,
+          "streams": ["MRF", "Composting", "Anaerobic Digestion", "E-Waste", "C&D Debris", "Biofuels"],
+          "jobs": 450,
+          "status": "proposed",
+          "investment_usd": 120000000,
+          "public_funding_pct": 35,
+          "private_funding_pct": 65
+        },
+        {
+          "id": "hub-south-dade",
+          "name": "305 Agri-Composting Hub — South Dade",
+          "coordinates": [-80.4300, 25.5400],
+          "capacity_tpd": 600,
+          "streams": ["Food Waste", "Agricultural Residues", "Yard Waste", "Biochar"],
+          "jobs": 180,
+          "status": "proposed",
+          "investment_usd": 45000000,
+          "public_funding_pct": 50,
+          "private_funding_pct": 50
+        },
+        {
+          "id": "hub-opa-locka",
+          "name": "305 Industrial Symbiosis Hub — Opa-locka",
+          "coordinates": [-80.2519, 25.9022],
+          "capacity_tpd": 800,
+          "streams": ["Industrial Waste Exchange", "Upcycling", "Repair Hub", "Tool Library"],
+          "jobs": 220,
+          "status": "planning",
+          "investment_usd": 38000000,
+          "public_funding_pct": 40,
+          "private_funding_pct": 60
+        }
+      ]
+    }
+  },
+  "material_streams": [
+    { "id": "organics",    "name": "Organics / Food Waste",       "color": "#74C69D", "icon": "leaf",    "tons_2024": 680000 },
+    { "id": "recyclables", "name": "Recyclables (Paper/Metal/Glass)", "color": "#00B4D8", "icon": "recycle", "tons_2024": 580000 },
+    { "id": "plastics",    "name": "Plastics",                    "color": "#F59E0B", "icon": "bottle",  "tons_2024": 320000 },
+    { "id": "ewaste",      "name": "E-Waste",                     "color": "#7C3AED", "icon": "cpu",     "tons_2024": 48000 },
+    { "id": "cd",          "name": "Construction & Demolition",   "color": "#6B7280", "icon": "hammer",  "tons_2024": 940000 },
+    { "id": "hazmat",      "name": "Household Hazardous Waste",   "color": "#DC2626", "icon": "warning", "tons_2024": 28000 },
+    { "id": "textiles",    "name": "Textiles",                    "color": "#EC4899", "icon": "shirt",   "tons_2024": 95000 },
+    { "id": "yard",        "name": "Yard Waste / Biomass",        "color": "#2D6A4F", "icon": "tree",    "tons_2024": 310000 }
+  ],
+  "historical_landfill_assets": {
+    "description": "Miami-Dade historical closed landfills contain recoverable materials with significant economic value",
+    "sites": [
+      {
+        "id": "MD-LF-002",
+        "name": "West Little River",
+        "estimated_metals_tons": 42000,
+        "estimated_value_usd": 38000000,
+        "redevelopment_potential": "zero_waste_hub"
+      },
+      {
+        "id": "MD-LF-004",
+        "name": "NW 58th Street",
+        "estimated_metals_tons": 68000,
+        "estimated_value_usd": 61000000,
+        "redevelopment_potential": "circular_economy_park"
+      }
+    ]
+  }
+}

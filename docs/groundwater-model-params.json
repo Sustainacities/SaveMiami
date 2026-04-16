@@ -1,0 +1,122 @@
+{
+  "_description": "Biscayne Aquifer groundwater transport parameters for SaveMiami PFAS plume model",
+  "_status": "STUB — all field values are null pending FIU data integration",
+  "_contact": "FIU Institute of Environment / Southeast Environmental Research Center (SERC)",
+  "_fiu_serc_url": "https://serc.fiu.edu",
+  "_fiu_env_url": "https://environment.fiu.edu",
+  "_data_request": "Request Biscayne Aquifer monitoring well data for NW 107th Ave / Doral area, 2015–present. Priority: post-fire period Feb–June 2023.",
+
+  "site": {
+    "name": "Miami-Dade Resources Recovery Facility — Biscayne Aquifer Zone",
+    "facility_id": "MD-INC-001",
+    "coordinates": { "lng": -80.3534, "lat": 25.8012 },
+    "aquifer": "Biscayne Aquifer (Qb)",
+    "epa_aquifer_type": "Principal Aquifer",
+    "drinking_water_use": true,
+    "wellhead_protection_zone": true
+  },
+
+  "confirmed_facts": {
+    "aquifer_depth_ft": {
+      "value": "0–20",
+      "source": "USGS Biscayne Aquifer mapping",
+      "quality": "confirmed",
+      "url": "https://pubs.usgs.gov/wri/1998/4091/report.pdf"
+    },
+    "pfas_presence_confirmed": {
+      "value": true,
+      "source": "Florida DEP / Miami-Dade Fire Rescue post-fire sampling",
+      "quality": "confirmed — presence only, no ppt value published",
+      "url": "https://floridadep.gov/waste/waste-cleanup/content/miami-dade-fire-rescue"
+    },
+    "pfas_compounds_detected": {
+      "value": ["PFOS", "PFOA"],
+      "source": "FDEP soil/groundwater sampling (post-fire, 2023)",
+      "quality": "confirmed"
+    },
+    "cleanup_target_exceeded": {
+      "value": true,
+      "source": "FDEP — 'concentrations exceeding provisional Groundwater Cleanup Target Levels'",
+      "quality": "confirmed"
+    }
+  },
+
+  "model_parameters": {
+    "_note": "All values null — to be populated from FIU monitoring well data and aquifer characterization studies",
+
+    "hydraulic_conductivity_ms": {
+      "value": null,
+      "unit": "m/s",
+      "typical_biscayne_range": "1e-4 to 1e-2",
+      "todo": "FIU monitoring well slug test or aquifer pump test near NW 107th Ave"
+    },
+    "porosity": {
+      "value": null,
+      "unit": "dimensionless (0–1)",
+      "typical_biscayne_range": "0.15–0.35",
+      "todo": "FIU core sample porosity measurement"
+    },
+    "gradient_direction_deg": {
+      "value": null,
+      "unit": "degrees (meteorological convention, flow going TO)",
+      "typical_biscayne": "~180° (general southward flow toward Biscayne Bay)",
+      "todo": "FIU water table contour map — potentiometric surface near Doral"
+    },
+    "gradient_magnitude": {
+      "value": null,
+      "unit": "m/m (dimensionless)",
+      "typical_biscayne_range": "0.0001–0.001",
+      "todo": "FIU water table elevation differential across 1km"
+    },
+    "retardation_factor_pfos": {
+      "value": null,
+      "unit": "dimensionless",
+      "typical_range": "1.5–8",
+      "note": "PFOS sorbs to organic carbon in soil; retardation slows plume vs. groundwater velocity",
+      "todo": "FIU lab column study with site soil samples + PFOS solution"
+    },
+    "retardation_factor_pfoa": {
+      "value": null,
+      "unit": "dimensionless",
+      "typical_range": "1.2–4",
+      "todo": "Same FIU lab column study"
+    },
+    "longitudinal_dispersivity_m": {
+      "value": null,
+      "unit": "meters",
+      "typical_range": "1–50",
+      "todo": "FIU tracer test or literature estimate from Biscayne analogues"
+    },
+    "organic_carbon_fraction": {
+      "value": null,
+      "unit": "g_OC / g_soil",
+      "typical_biscayne_range": "0.001–0.02",
+      "todo": "FIU soil chemistry analysis — near-surface samples within 500m of facility"
+    },
+    "effective_porosity": {
+      "value": null,
+      "unit": "dimensionless",
+      "note": "Used for groundwater velocity calculation: v = K × i / n_e",
+      "todo": "Derived from FIU porosity + pump test data"
+    }
+  },
+
+  "monitoring_wells": {
+    "_note": "To be populated with FIU/FDEP well IDs and coordinates",
+    "wells": []
+  },
+
+  "data_quality_targets": {
+    "minimum_acceptable": "≥3 monitoring wells within 1km of facility, ≥2 sampling events",
+    "preferred": "Quarterly sampling 2018–2023, PFAS full-scan (40+ compounds), depth-profiled wells",
+    "ideal": "FIU real-time sensor network + quarterly grab samples + post-fire pulse monitoring"
+  },
+
+  "how_to_integrate": {
+    "step_1": "Populate field values above from FIU data",
+    "step_2": "Import into lib/nvidia/modulus-client.ts groundwater_params field",
+    "step_3": "Run NVIDIA Modulus pfas_groundwater simulation via POST /api/simulate",
+    "step_4": "Render groundwater plume layer in useWasteLayers.ts alongside atmospheric plume",
+    "step_5": "Compare modeled plume extent vs. actual well concentrations for calibration"
+  }
+}

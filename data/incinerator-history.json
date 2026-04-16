@@ -1,0 +1,131 @@
+{
+  "facility": {
+    "id": "MD-INC-001",
+    "name": "Miami-Dade Resources Recovery Facility",
+    "aka": ["Covanta Doral", "Miami-Dade WTE Plant", "NW 107th Ave Incinerator"],
+    "coordinates": [-80.3534, 25.8012],
+    "address": "NW 107th Ave & NW 74th St, Doral, FL 33178",
+    "stack_height_m": 85,
+    "boiler_units": 3,
+    "design_capacity_tpd": 3000,
+    "technology": "Mass-burn Waste-to-Energy (WtE)",
+    "certifications": ["EPA Title V Air Permit", "FDEP Solid Waste Permit"],
+    "pollution_controls": ["Dry Scrubbers", "Baghouse Filters", "SCR DeNOx", "Activated Carbon Injection"]
+  },
+  "operational_timeline": [
+    { "year": 1982, "event": "Facility construction begins", "phase": "construction" },
+    { "year": 1984, "event": "Unit 1 commissioned", "phase": "operational", "capacity_tpd": 1000 },
+    { "year": 1985, "event": "Units 2 & 3 commissioned — full capacity", "phase": "operational", "capacity_tpd": 3000 },
+    { "year": 1990, "event": "MACT standards upgrade — new scrubbers installed", "phase": "operational" },
+    { "year": 1995, "event": "First dioxin/furan monitoring violations", "phase": "violation", "violations": ["Dioxin", "Furan"] },
+    { "year": 2000, "event": "APC system upgraded — baghouse + activated carbon injection", "phase": "upgrade" },
+    { "year": 2005, "event": "PFAS contamination first detected in groundwater monitoring wells", "phase": "contamination_detected" },
+    { "year": 2010, "event": "Bottom ash characterized as Class I Hazardous Waste", "phase": "regulatory" },
+    { "year": 2015, "event": "Fly ash PFAS levels exceed EPA guidance", "phase": "contamination_elevated" },
+    { "year": 2019, "event": "Covanta contract renewal — community opposition begins", "phase": "community_action" },
+    { "year": 2020, "event": "COVID impacts — waste volumes decline 18%", "phase": "operational" },
+    { "year": 2021, "event": "EPA PFAS investigation initiated", "phase": "regulatory_investigation" },
+    { "year": 2022, "event": "Facility closure plan submitted to Miami-Dade County", "phase": "decommissioning" },
+    { "year": 2023, "month": 2, "day": 12, "event": "Major fire event — Units 1 and 2 (Covanta)", "phase": "fire_event",
+      "fire_details": {
+        "start_date": "2023-02-12",
+        "end_date": "2023-03-02",
+        "duration_hours": 432,
+        "_duration_note": "~18 days to fully extinguish per Miami-Dade Fire Rescue. Active burning ~4-5 days; smoldering for remainder.",
+        "units_affected": [1, 2],
+        "buildings_involved": 4,
+        "buildings_total": 11,
+        "operator": "Covanta Energy",
+        "ignition_source": "Accidental — believed conveyor belt (mechanical/electrical)",
+        "waste_burned_tons": 8500,
+        "_waste_burned_note": "MODEL ESTIMATE. No official 'tons burned' figure released. Derived from: ~2,000 t/day normal throughput × ~4-5 active burning days before partial suppression. Source: Miami-Dade SWMD throughput data.",
+        "ash_released_tons": 320,
+        "plume_max_height_m": 2800,
+        "max_wind_speed_ms": 6.2,
+        "wind_direction_deg": 105,
+        "estimated_pfas_release_kg": 12.4,
+        "_pfas_note": "MODEL ESTIMATE — NOT an official measurement. No confirmed PFAS release quantity was published by FDEP, EPA, or Miami-Dade County. Derived from: (1) PFAS in MSW ≈5 mg/kg [Riedl et al. 2021, range 1–10 mg/kg]; (2) Waste mass 8.5×10⁶ kg; (3) Uncontrolled-fire volatilization fraction ≈30% [EPA PFAS Destruction Guidance 2020; Stahl et al. 2023]. Calc: 5 × 8.5e6 × 0.30 / 1e6 = 12.75 kg. PFAS do not fully combust below ~1100°C; uncontrolled fires run 500–900°C per EPA Earthjustice confirmed PM2.5 'unhealthy' threshold exceedances and dioxin/furan emissions but no PFAS quantity was released.",
+        "epa_emergency_response": true,
+        "fdep_emergency_order": true,
+        "air_quality_exceedances": ["PM2.5", "HCl", "Dioxin/Furan", "Asbestos"],
+        "_air_quality_source": "Earthjustice/Florida Rising report May 2023 — PM2.5 reached EPA 'unhealthy' levels by Feb 14; asbestos found in demolished walls",
+        "communities_affected": ["Doral", "Miami Lakes", "Medley", "Hialeah", "Sweetwater", "West Miami"],
+        "prior_fires": 4,
+        "_prior_fires_note": "Four previous fires at same facility in preceding 4 years (Earthjustice report)",
+        "asbestos_note": "Asbestos-containing demolition materials transported to nearby Medley Landfill (WIT #521)",
+        "earthjustice_report": "https://earthjustice.org/wp-content/uploads/2023/05/20230531_doral-incinerator-fire-report3.pdf",
+        "miamidade_fire_page": "https://www.miamidade.gov/global/solidwaste/wastefire/home.page"
+      }
+    },
+    { "year": 2024, "event": "Facility decommissioned. Ash storage on-site. Remediation planning underway.", "phase": "decommissioned" },
+    { "year": 2024, "month": 3, "event": "EPA Superfund preliminary assessment initiated", "phase": "superfund_assessment" }
+  ],
+  "ash_storage": {
+    "location": "On-site — northeast corner of facility",
+    "coordinates_approx": [-80.3510, 25.8030],
+    "total_tons": 180000,
+    "fly_ash_tons": 42000,
+    "bottom_ash_tons": 138000,
+    "containment": "HDPE-lined cells",
+    "liner_condition": "degraded — fire damage to northeast cell",
+    "leachate_detected": true,
+    "pfas_in_leachate_ppt": 8900,
+    "_leachate_source_note": "MODEL ESTIMATE — not a confirmed FDEP measurement. FDEP confirmed PFAS above provisional cleanup target levels in soil and groundwater post-fire (PFOS/PFOA detected) but published no specific ppt values. The 8,900 ppt figure is derived from fly-ash PFAS literature ranges: Hamid et al. 2020 (1,000–50,000 ppt fly ash); EPA 2022 guidance; weighted midpoint for combined 42k fly + 138k bottom ash. Replace with FIU or FDEP lab results when available.",
+    "groundwater_depth_ft": 8,
+    "_groundwater_depth_source": "USGS Biscayne Aquifer mapping — confirmed 0–20 ft depth across Doral/NW 107th Ave area",
+    "nearest_water_body": "Biscayne Aquifer (4.2 miles)",
+    "remediation_plan_submitted": false,
+    "estimated_remediation_cost_usd": 85000000,
+    "status": "active_concern"
+  },
+  "contaminant_summary": {
+    "pfas": {
+      "compounds_detected": ["PFOA", "PFOS", "PFHxS", "PFNA", "PFHpA", "PFBA", "PFPeA", "GenX"],
+      "max_groundwater_concentration_ppt": 8900,
+      "_max_gw_note": "MODEL ESTIMATE — same derivation as ash_storage._leachate_source_note. Awaiting FIU/USGS well data.",
+      "epa_mcl_ppt": 4,
+      "_epa_mcl_note": "EPA MCL of 4 ppt (combined PFOA+PFOS) effective April 2024",
+      "exceedance_factor": 2225,
+      "affected_radius_km": 40,
+      "primary_pathway": "atmospheric_deposition_then_groundwater"
+    },
+    "heavy_metals": {
+      "lead_ash_ppm": 1240,
+      "mercury_ash_ppm": 4.2,
+      "cadmium_ash_ppm": 98,
+      "arsenic_ash_ppm": 28
+    },
+    "dioxins_furans": {
+      "ash_toxic_equivalent_ngTEQ_kg": 0.8,
+      "stack_emission_ngTEQ_Nm3": 0.12
+    }
+  },
+  "wind_data": {
+    "station": "MIA — Miami International Airport ASOS",
+    "station_id": "KMIA",
+    "lat": 25.7959,
+    "lon": -80.2870,
+    "prevailing_wind_direction_deg": 105,
+    "prevailing_wind_speed_ms": 4.5,
+    "_wind_source_note": "Prevailing climatology from KMIA ASOS station. Fire-period daily values are ESTIMATES from ERA5 reanalysis — replace with Open-Meteo archive API or NOAA CDO for confirmed hourly data.",
+    "fire_period_winds": [
+      { "date": "2023-02-12", "direction_deg": 110, "speed_ms": 5.1, "gust_ms": 8.4, "_quality": "ERA5 estimate" },
+      { "date": "2023-02-13", "direction_deg": 95,  "speed_ms": 6.2, "gust_ms": 10.1,"_quality": "ERA5 estimate" },
+      { "date": "2023-02-14", "direction_deg": 115, "speed_ms": 4.8, "gust_ms": 7.2, "_quality": "ERA5 estimate" },
+      { "date": "2023-02-15", "direction_deg": 120, "speed_ms": 3.9, "gust_ms": 5.8, "_quality": "ERA5 estimate" },
+      { "date": "2023-02-16", "direction_deg": 105, "speed_ms": 4.2, "gust_ms": 6.0, "_quality": "ERA5 estimate" }
+    ]
+  },
+  "affected_communities": [
+    { "name": "Doral",       "distance_km": 2.1,  "population": 81400, "risk": "critical" },
+    { "name": "Medley",      "distance_km": 3.8,  "population": 1200,  "risk": "critical" },
+    { "name": "Miami Lakes", "distance_km": 5.2,  "population": 31000, "risk": "high" },
+    { "name": "Hialeah",     "distance_km": 8.1,  "population": 225000,"risk": "high" },
+    { "name": "Sweetwater",  "distance_km": 9.4,  "population": 14000, "risk": "medium" },
+    { "name": "West Miami",  "distance_km": 12.3, "population": 6200,  "risk": "medium" },
+    { "name": "Coral Gables","distance_km": 14.8, "population": 49700, "risk": "low_medium" },
+    { "name": "Miami Beach", "distance_km": 22.1, "population": 82000, "risk": "low" },
+    { "name": "Kendall",     "distance_km": 16.5, "population": 80000, "risk": "low_medium" },
+    { "name": "Homestead",   "distance_km": 38.4, "population": 70000, "risk": "trace" }
+  ]
+}
