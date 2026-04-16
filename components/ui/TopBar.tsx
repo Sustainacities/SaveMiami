@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Waves, Menu, X, ExternalLink, FlaskConical, Trash2, Terminal, Sparkles, BarChart } from 'lucide-react';
+import { Waves, Menu, X, ExternalLink, FlaskConical, Trash2, Terminal, Sparkles, BarChart, MapPin } from 'lucide-react';
 import { useMapStore } from '@/store/mapStore';
 
 export function TopBar() {
@@ -146,6 +146,18 @@ export function TopBar() {
             <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED] animate-pulse-slow" />
           )}
         </button>
+
+        {/* Sampling Plan meeting view */}
+        <a
+          href="/sampling-plan"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border border-sky-500/50 text-sky-400 hover:bg-sky-500/10"
+          title="Sampling Plan — site selection map for field meetings"
+        >
+          <MapPin size={12} />
+          MEETING
+        </a>
 
         {/* Partner badges */}
         <div className="hidden md:flex items-center gap-1.5">

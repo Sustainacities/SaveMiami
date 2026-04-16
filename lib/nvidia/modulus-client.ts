@@ -61,6 +61,18 @@ export interface ModulusSimRequest {
     wet_deposition_scavenging: number;
     photolysis_rate_hz: number;
   };
+  // Groundwater transport params — null until FIU Biscayne Aquifer data is integrated.
+  // See docs/groundwater-model-params.json for the full parameter stub and FIU data request spec.
+  // Contact: FIU Institute of Environment / Southeast Environmental Research Center (SERC)
+  groundwater_params?: {
+    hydraulic_conductivity_ms:  number | null; // TODO: replace with FIU monitoring well data
+    porosity:                   number | null; // TODO: replace with FIU core sample data
+    gradient_direction_deg:     number | null; // TODO: replace with FIU water table gradient
+    gradient_magnitude:         number | null; // TODO: replace with FIU water table measurements
+    retardation_factor:         number | null; // TODO: PFAS sorption — FIU lab column study
+    dispersivity_m:             number | null; // TODO: aquifer tracer test data
+    organic_carbon_fraction:    number | null; // TODO: FIU soil chemistry data
+  };
 }
 
 export interface ModulusSimResponse {

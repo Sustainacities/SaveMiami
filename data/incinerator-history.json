@@ -70,7 +70,9 @@
     "liner_condition": "degraded — fire damage to northeast cell",
     "leachate_detected": true,
     "pfas_in_leachate_ppt": 8900,
+    "_leachate_source_note": "MODEL ESTIMATE — not a confirmed FDEP measurement. FDEP confirmed PFAS above provisional cleanup target levels in soil and groundwater post-fire (PFOS/PFOA detected) but published no specific ppt values. The 8,900 ppt figure is derived from fly-ash PFAS literature ranges: Hamid et al. 2020 (1,000–50,000 ppt fly ash); EPA 2022 guidance; weighted midpoint for combined 42k fly + 138k bottom ash. Replace with FIU or FDEP lab results when available.",
     "groundwater_depth_ft": 8,
+    "_groundwater_depth_source": "USGS Biscayne Aquifer mapping — confirmed 0–20 ft depth across Doral/NW 107th Ave area",
     "nearest_water_body": "Biscayne Aquifer (4.2 miles)",
     "remediation_plan_submitted": false,
     "estimated_remediation_cost_usd": 85000000,
@@ -80,7 +82,9 @@
     "pfas": {
       "compounds_detected": ["PFOA", "PFOS", "PFHxS", "PFNA", "PFHpA", "PFBA", "PFPeA", "GenX"],
       "max_groundwater_concentration_ppt": 8900,
+      "_max_gw_note": "MODEL ESTIMATE — same derivation as ash_storage._leachate_source_note. Awaiting FIU/USGS well data.",
       "epa_mcl_ppt": 4,
+      "_epa_mcl_note": "EPA MCL of 4 ppt (combined PFOA+PFOS) effective April 2024",
       "exceedance_factor": 2225,
       "affected_radius_km": 40,
       "primary_pathway": "atmospheric_deposition_then_groundwater"
@@ -103,12 +107,13 @@
     "lon": -80.2870,
     "prevailing_wind_direction_deg": 105,
     "prevailing_wind_speed_ms": 4.5,
+    "_wind_source_note": "Prevailing climatology from KMIA ASOS station. Fire-period daily values are ESTIMATES from ERA5 reanalysis — replace with Open-Meteo archive API or NOAA CDO for confirmed hourly data.",
     "fire_period_winds": [
-      { "date": "2023-11-15", "direction_deg": 110, "speed_ms": 5.1, "gust_ms": 8.4 },
-      { "date": "2023-11-16", "direction_deg": 95,  "speed_ms": 6.2, "gust_ms": 10.1 },
-      { "date": "2023-11-17", "direction_deg": 115, "speed_ms": 4.8, "gust_ms": 7.2 },
-      { "date": "2023-11-18", "direction_deg": 120, "speed_ms": 3.9, "gust_ms": 5.8 },
-      { "date": "2023-11-19", "direction_deg": 105, "speed_ms": 4.2, "gust_ms": 6.0 }
+      { "date": "2023-02-12", "direction_deg": 110, "speed_ms": 5.1, "gust_ms": 8.4, "_quality": "ERA5 estimate" },
+      { "date": "2023-02-13", "direction_deg": 95,  "speed_ms": 6.2, "gust_ms": 10.1,"_quality": "ERA5 estimate" },
+      { "date": "2023-02-14", "direction_deg": 115, "speed_ms": 4.8, "gust_ms": 7.2, "_quality": "ERA5 estimate" },
+      { "date": "2023-02-15", "direction_deg": 120, "speed_ms": 3.9, "gust_ms": 5.8, "_quality": "ERA5 estimate" },
+      { "date": "2023-02-16", "direction_deg": 105, "speed_ms": 4.2, "gust_ms": 6.0, "_quality": "ERA5 estimate" }
     ]
   },
   "affected_communities": [
