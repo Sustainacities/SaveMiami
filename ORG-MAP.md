@@ -116,35 +116,33 @@ What this means for what you already have:
 
 ---
 
-## 4. The MIAGPT naming conflict — three options
+## 4. The MIAGPT naming conflict — DECIDED: Option B (parallel)
 
-You already have `Sustainacities/MIAGPT`. The original task asks me to
-create a fresh `packages/miagpt/` inside `OpenMiami_OSS`. We need to pick
-one of three paths before the next session writes any chat-assistant code:
+**Decision:** Keep `Sustainacities/MIAGPT` as the older, sustainability-focused
+version, and build `OpenMiami_OSS/packages/miagpt/` as the new
+civic-resource version. Different audiences, different prompts, no
+disruption to anything currently running.
 
-**Option A — Migrate.** Move the existing `Sustainacities/MIAGPT` into
-`OpenMiami_OSS/packages/miagpt/`. Archive the old repo with a `README` note
-pointing to the new home.
-*Pros:* one place, no duplication, keeps git history.
-*Cons:* the existing MIAGPT is Nunjucks-based; the planned package is a
-JavaScript Claude API wrapper. They may not be the same shape — a migration
-might end up being a rewrite anyway.
+**What this means in practice (for the next session):**
 
-**Option B — Parallel.** Keep `Sustainacities/MIAGPT` as the older,
-sustainability-focused version, and let `OpenMiami_OSS/packages/miagpt/` be
-the new civic-resource version. Different audiences, different prompts.
-*Pros:* no risk to existing deployments. Each has a clear purpose.
-*Cons:* easy to confuse contributors. Two codebases to maintain.
+- The consolidation session will create a brand-new `packages/miagpt/`
+  inside `OpenMiami_OSS`. It will **not** touch, copy from, or migrate the
+  existing `Sustainacities/MIAGPT`.
+- To prevent contributor confusion (the main downside of running two), each
+  repo's `README` should clearly say what it's for, who uses it, and how
+  it's *different* from the other. Concretely:
+  - `Sustainacities/MIAGPT` README → "Sustainability/climate chat assistant.
+    For [audience]. Not the same project as `OpenMiami_OSS/packages/miagpt/`,
+    which is the civic-resource finder for Little Haiti / Miami residents."
+  - `OpenMiami_OSS/packages/miagpt/` README → mirror image of the above,
+    pointing the other direction.
+- Different naming inside each codebase helps too: keep `MIAGPT` as the
+  capitalization for the Sustainacities one, and use `MiaGPT` (one capital)
+  for the OpenMiami one. Small thing, but it shows up in import statements
+  and folder listings and reduces "wait, which one is this?" moments.
 
-**Option C — Retire.** Archive `Sustainacities/MIAGPT` entirely. Build the
-new one in `OpenMiami_OSS` from scratch.
-*Pros:* cleanest mental model.
-*Cons:* if the existing MIAGPT is in use somewhere or has ideas worth
-keeping, you lose them unless we extract first.
-
-I'd lean **Option A** if the existing MIAGPT was an early prototype that
-isn't actively used, and **Option B** if it's actually serving users today.
-You'll know which.
+This is captured here so the next session doesn't have to re-litigate the
+decision.
 
 ---
 
@@ -157,8 +155,7 @@ answers into this map in one update pass before we start the consolidation.
    hackathon repo, the LHRT-finder hackathon repo, and any third. Even if
    they live on someone's personal GitHub (e.g., `github.com/their-name/repo`),
    that's fine.
-2. **MIAGPT decision.** A, B, or C from §4 above? Or "I don't know yet —
-   let's talk about it."
+2. ~~**MIAGPT decision.** A, B, or C from §4 above?~~ **ANSWERED: B (parallel).** See §4.
 3. **Logos Capital.** Is it a digital project (website, app, code) or just a
    business entity? If digital, where does it live? If not, we leave it off
    the map.
