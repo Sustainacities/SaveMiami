@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --miami-night: #0D1117;
+    --miami-panel: #111827;
+    --miami-border: #1F2937;
+    --miami-teal: #00B4D8;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background: var(--miami-night);
+    color: #f3f4f6;
+    font-family: Inter, system-ui, sans-serif;
+  }
+
+  /* MapLibre GL canvas */
+  .maplibregl-canvas {
+    outline: none;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-miami-panel/90 border border-miami-border rounded-xl backdrop-blur-sm;
+  }
+
+  .btn-icon {
+    @apply p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors;
+  }
+
+  .layer-toggle {
+    @apply flex items-center gap-2 w-full px-3 py-2 text-xs rounded-lg transition-colors;
+  }
+
+  .layer-toggle.active {
+    @apply text-white bg-white/5;
+  }
+
+  .layer-toggle:not(.active) {
+    @apply text-gray-500 hover:text-gray-300 hover:bg-white/5;
+  }
+}
+
+/* Hide Mapbox/MapLibre attribution */
+.maplibregl-ctrl-attrib {
+  display: none !important;
+}

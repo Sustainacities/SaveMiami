@@ -1,0 +1,14 @@
+version: "3.9"
+
+# Development overrides: hot-reload mounts
+services:
+  backend:
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+    environment:
+      ENVIRONMENT: development
+      LOG_LEVEL: DEBUG
+
+  frontend:
+    command: npm run dev -- --host 0.0.0.0 --port 3000
+    environment:
+      NODE_ENV: development
